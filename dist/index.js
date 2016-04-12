@@ -105,7 +105,7 @@ DefineModule('pxlr/gl/canvas', function (require) {
 });
 
 DefineModule('pxlr/gl/frame', function (require) {
-  var CellGrid = require('models/cell-grid');
+  var CellGrid = require('pxlr/core/cell-grid');
 
   return DefineClass(CellGrid, {
     constructor: function Frame(dimensions) {
