@@ -1,6 +1,6 @@
 (function () {
 /* start:pxlr-gl */
-Definemodule('pxlr/gl', function () {
+DefineModule('pxlr/gl', function () {
   return {
     name: "pxlr-gl",
     information: "Rendering pipeline for pxlr"
