@@ -8,7 +8,7 @@ DefineModule('pxlr/gl', function () {
 });
 
 DefineModule('views/canvas-renderer', function (require) {
-  return require('pxlr/gl//canvas');
+  return require('pxlr/gl/canvas');
 });
 
 DefineModule('pxlr/gl/canvas', function (require) {
