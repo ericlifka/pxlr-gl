@@ -1,8 +1,8 @@
-DefineModule('pxlr/gl/frame', function (require) {
+SM.DefineModule('pxlr/gl/frame', function (require) {
   var CellGrid = require('pxlr/core/cell-grid');
 
-  return DefineClass(CellGrid, {
-    constructor: function Frame(dimensions) {
+  return SM.DefineClass([CellGrid, {
+    constructor: function (dimensions) {
       this.width = dimensions.width;
       this.height = dimensions.height;
       this.cells = [];
@@ -34,5 +34,5 @@ DefineModule('pxlr/gl/frame', function (require) {
     setFillColor: function (fillColor) {
       this.fillColor = fillColor;
     }
-  });
+  }]);
 });

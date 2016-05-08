@@ -1,4 +1,4 @@
-DefineModule('pxlr/gl/canvas', function (require) {
+SM.DefineModule('pxlr/gl/canvas', function (require) {
   var Frame = require('pxlr/gl/frame');
 
   function maximumPixelSize(width, height) {
@@ -35,13 +35,13 @@ DefineModule('pxlr/gl/canvas', function (require) {
     return el;
   }
 
-  return DefineClass({
+  return SM.DefineClass([{
     width: 80,
     height: 50,
     pixelSize: 1,
     nextFrame: 0,
 
-    constructor: function Renderer(options) {
+    constructor: function (options) {
       options = options || {};
 
       this.width = options.width || this.width;
@@ -88,5 +88,5 @@ DefineModule('pxlr/gl/canvas', function (require) {
         frame.setFillColor(fillColor);
       });
     }
-  });
+  }]);
 });
