@@ -143,7 +143,7 @@ SM.DefineModule('pxlr/gl/frame', function (require) {
   }]);
 });
 
-DefineModule('pxlr/gl/webgl', function (require) {
+SM.DefineModule('pxlr/gl/webgl', function (require) {
   var Frame = require('pxlr/gl/frame');
 
   function maximumPixelSize(width, height) {
@@ -296,7 +296,7 @@ DefineModule('pxlr/gl/webgl', function (require) {
     gl.enableVertexAttribArray(vertexPositionAttribute);
   }
 
-  return DefineClass({
+  return SM.DefineClass({
     width: 80,
     height: 50,
     pixelSize: 1,
