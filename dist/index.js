@@ -11,7 +11,7 @@ DefineModule('views/canvas-renderer', function (require) {
   return require('pxlr/gl/canvas');
 });
 
-DefineModule('pxlr/gl/canvas', function (require) {
+SM.DefineModule('pxlr/gl/canvas', function (require) {
   var Frame = require('pxlr/gl/frame');
 
   function maximumPixelSize(width, height) {
@@ -48,13 +48,13 @@ DefineModule('pxlr/gl/canvas', function (require) {
     return el;
   }
 
-  return DefineClass({
+  return SM.DefineClass([{
     width: 80,
     height: 50,
     pixelSize: 1,
     nextFrame: 0,
 
-    constructor: function Renderer(options) {
+    constructor: function (options) {
       options = options || {};
 
       this.width = options.width || this.width;
@@ -101,14 +101,14 @@ DefineModule('pxlr/gl/canvas', function (require) {
         frame.setFillColor(fillColor);
       });
     }
-  });
+  }]);
 });
 
-DefineModule('pxlr/gl/frame', function (require) {
+SM.DefineModule('pxlr/gl/frame', function (require) {
   var CellGrid = require('pxlr/core/cell-grid');
 
-  return DefineClass(CellGrid, {
-    constructor: function Frame(dimensions) {
+  return SM.DefineClass([CellGrid, {
+    constructor: function (dimensions) {
       this.width = dimensions.width;
       this.height = dimensions.height;
       this.cells = [];
@@ -140,7 +140,7 @@ DefineModule('pxlr/gl/frame', function (require) {
     setFillColor: function (fillColor) {
       this.fillColor = fillColor;
     }
-  });
+  }]);
 });
 
 DefineModule('pxlr/gl/webgl', function (require) {
