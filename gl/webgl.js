@@ -1,12 +1,13 @@
 SM.DefineModule('pxlr/gl/webgl', function (require) {
   var Frame = require('pxlr/gl/frame');
+  var DomHelpers = require('pxlr/gl/dom-helpers');
 
   function createCanvas() {
 
   }
 
-  return SM.DefineClass([{
-    constructor: function Renderer(options) {
+  return SM.DefineClass([ DomHelpers, {
+    constructor: function (options) {
       options = options || {};
 
       this.width = options.width || this.width;
@@ -14,7 +15,7 @@ SM.DefineModule('pxlr/gl/webgl', function (require) {
       this.pixelSize = maximumPixelSize(this.width, this.height);
 
       this.container = options.container || document.body;
-      this.canvas = createCanvas(this);
+      this.canvas = this.createCanvasElement(this);
       this.container.appendChild(this.canvas);
 
     },

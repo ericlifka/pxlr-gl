@@ -1,5 +1,6 @@
 SM.DefineModule('pxlr/gl/canvas', function (require) {
   var Frame = require('pxlr/gl/frame');
+  var DomHelpers = require('pxlr/gl/dom-helpers');
 
   function maximumPixelSize(width, height) {
     var maxWidth = window.innerWidth;
@@ -23,19 +24,7 @@ SM.DefineModule('pxlr/gl/canvas', function (require) {
     return pixelSize;
   }
 
-  function createCanvasEl(dimensions) {
-    dimensions.fullWidth = dimensions.width * dimensions.pixelSize;
-    dimensions.fullHeight = dimensions.height * dimensions.pixelSize;
-
-    var el = document.createElement('canvas');
-    el.width = dimensions.fullWidth;
-    el.height = dimensions.fullHeight;
-    el.classList.add('pixel-engine-canvas');
-
-    return el;
-  }
-
-  return SM.DefineClass([{
+  return SM.DefineClass([ DomHelpers, {
     width: 80,
     height: 50,
     pixelSize: 1,
@@ -49,7 +38,7 @@ SM.DefineModule('pxlr/gl/canvas', function (require) {
       this.pixelSize = maximumPixelSize(this.width, this.height);
 
       this.container = options.container || document.body;
-      this.canvas = createCanvasEl(this);
+      this.canvas = this.createCanvasElement(this);
       this.container.appendChild(this.canvas);
 
       this.canvasDrawContext = this.canvas.getContext("2d", { alpha: false });
