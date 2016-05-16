@@ -2,28 +2,6 @@ SM.DefineModule('pxlr/gl/canvas', function (require) {
   var Frame = require('pxlr/gl/frame');
   var DomHelpers = require('pxlr/gl/dom-helpers');
 
-  function maximumPixelSize(width, height) {
-    var maxWidth = window.innerWidth;
-    var maxHeight = window.innerHeight;
-    var pixelSize = 1;
-    while (true) {
-      if (width * pixelSize > maxWidth ||
-        height * pixelSize > maxHeight) {
-
-        pixelSize--;
-        break;
-      }
-
-      pixelSize++;
-    }
-
-    if (pixelSize <= 0) {
-      pixelSize = 1;
-    }
-
-    return pixelSize;
-  }
-
   return SM.DefineClass([ DomHelpers, {
     width: 80,
     height: 50,
@@ -35,7 +13,7 @@ SM.DefineModule('pxlr/gl/canvas', function (require) {
 
       this.width = options.width || this.width;
       this.height = options.height || this.height;
-      this.pixelSize = maximumPixelSize(this.width, this.height);
+      this.pixelSize = this.maximumPixelSize(this.width, this.height);
 
       this.container = options.container || document.body;
       this.canvas = this.createCanvasElement(this);

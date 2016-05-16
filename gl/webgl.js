@@ -12,7 +12,7 @@ SM.DefineModule('pxlr/gl/webgl', function (require) {
 
       this.width = options.width || this.width;
       this.height = options.height || this.height;
-      this.pixelSize = maximumPixelSize(this.width, this.height);
+      this.pixelSize = this.maximumPixelSize(this.width, this.height);
 
       this.container = options.container || document.body;
       this.canvas = this.createCanvasElement(this);
