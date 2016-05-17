@@ -1,5 +1,14 @@
 SM.DefineModule('pxlr/gl/dom-helpers', function () {
   return {
+    canvasSetup: function (options) {
+      this.container = options.container || document.body;
+      this.width = options.width || this.width;
+      this.height = options.height || this.height;
+
+      this.calculateMaximumPixelSize();
+      this.createCanvasElement();
+    },
+
     createCanvasElement: function () {
       this.canvas = document.createElement('canvas');
 
