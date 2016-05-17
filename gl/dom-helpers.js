@@ -1,25 +1,24 @@
 SM.DefineModule('pxlr/gl/dom-helpers', function () {
   return {
-    createCanvasElement: function (dimensions) {
-      dimensions.fullWidth = dimensions.width * dimensions.pixelSize;
-      dimensions.fullHeight = dimensions.height * dimensions.pixelSize;
+    createCanvasElement: function () {
+      this.canvas = document.createElement('canvas');
 
-      var el = document.createElement('canvas');
-      el.width = dimensions.fullWidth;
-      el.height = dimensions.fullHeight;
-      el.classList.add('pixel-engine-canvas');
+      this.canvas.width = this.fullWidth;
+      this.canvas.height = this.fullHeight;
+      this.canvas.classList.add('pxlr-canvas');
 
-      return el;
+      this.container.appendChild(this.canvas);
     },
 
-    maximumPixelSize: function (width, height) {
-      var maxWidth = window.innerWidth;
-      var maxHeight = window.innerHeight;
+    calculateMaximumPixelSize: function () {
+      var maxWidth = this.container.innerWidth;
+      var maxHeight = this.container.innerHeight;
+      var width = this.width;
+      var height = this.height;
       var pixelSize = 1;
-      while (true) {
-        if (width * pixelSize > maxWidth ||
-          height * pixelSize > maxHeight) {
 
+      while (true) {
+        if (width * pixelSize > maxWidth || height * pixelSize > maxHeight) {
           pixelSize--;
           break;
         }
@@ -31,7 +30,9 @@ SM.DefineModule('pxlr/gl/dom-helpers', function () {
         pixelSize = 1;
       }
 
-      return pixelSize;
+      this.pixelSize = pixelSize;
+      this.fullWidth = width * pixelSize;
+      this.fullHeight = height * pixelSize;
     }
   };
 });

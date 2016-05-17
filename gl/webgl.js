@@ -7,17 +7,18 @@ SM.DefineModule('pxlr/gl/webgl', function (require) {
   }
 
   return SM.DefineClass([ DomHelpers, {
+    width: 80,
+    height: 50,
+    pixelSize: 1,
+
     constructor: function (options) {
       options = options || {};
-
+      this.container = options.container || document.body;
       this.width = options.width || this.width;
       this.height = options.height || this.height;
-      this.pixelSize = this.maximumPixelSize(this.width, this.height);
 
-      this.container = options.container || document.body;
-      this.canvas = this.createCanvasElement(this);
-      this.container.appendChild(this.canvas);
-
+      this.calculateMaximumPixelSize();
+      this.createCanvasElement();
     },
 
     newRenderFrame: function () {

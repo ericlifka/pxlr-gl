@@ -10,14 +10,12 @@ SM.DefineModule('pxlr/gl/canvas', function (require) {
 
     constructor: function (options) {
       options = options || {};
-
+      this.container = options.container || document.body;
       this.width = options.width || this.width;
       this.height = options.height || this.height;
-      this.pixelSize = this.maximumPixelSize(this.width, this.height);
 
-      this.container = options.container || document.body;
-      this.canvas = this.createCanvasElement(this);
-      this.container.appendChild(this.canvas);
+      this.calculateMaximumPixelSize();
+      this.createCanvasElement();
 
       this.canvasDrawContext = this.canvas.getContext("2d", { alpha: false });
       this.frames = [
