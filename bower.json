@@ -22,5 +22,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "simple-web-modules": "git@github.com:ericlifka/simple-web-modules.git#v2.0.2",
+    "pxlr-core": "git@github.com:ericlifka/pxlr-core.git#v1.1.0"
+  }
 }
