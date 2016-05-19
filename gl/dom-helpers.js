@@ -20,8 +20,8 @@ SM.DefineModule('pxlr/gl/dom-helpers', function () {
     },
 
     calculateMaximumPixelSize: function () {
-      var maxWidth = this.container.innerWidth;
-      var maxHeight = this.container.innerHeight;
+      var maxWidth = window.innerWidth;
+      var maxHeight = window.innerHeight;
       var width = this.width;
       var height = this.height;
       var pixelSize = 1;
