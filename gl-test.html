@@ -6,10 +6,19 @@
 <script src="bower_components/simple-web-modules/index.js"></script>
 <script src="bower_components/pxlr-core/dist/index.js"></script>
 
+<script src="dist/index.js"></script>
+
 <script>
 
-  SM.DefineModule('main', function () {
-    console.log('main');
+  SM.DefineModule('main', function (require) {
+    var Renderer = require('pxlr/gl/webgl');
+
+    var renderer = new Renderer();
+
+    var frame = renderer.newRenderFrame();
+    frame.clear();
+
+    renderer.renderFrame();
   });
 
 </script>
